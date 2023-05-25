@@ -1,4 +1,5 @@
 import { GetPreviewerArguments } from "https://deno.land/x/ddu_vim@v2.5.0/base/kind.ts";
+import { ensureArray, fn } from "https://deno.land/x/ddu_vim@v2.5.0/deps.ts";
 import {
   ActionFlags,
   Actions,
@@ -7,6 +8,7 @@ import {
   Previewer,
 } from "https://deno.land/x/ddu_vim@v2.5.0/types.ts";
 import { Denops } from "https://deno.land/x/denops_core@v4.0.0/denops.ts";
+import { isObject } from "https://deno.land/x/unknownutil@v2.1.0/is.ts";
 
 export interface ActionData {
   bufnr: number;
@@ -42,9 +44,11 @@ export class Kind extends BaseKind<Params> {
     if (!action) {
       return undefined;
     }
+    const bufInfo = ensureArray(await fn.getbufinfo(args.denops, action.bufnr), isObject);
     return {
       kind: "buffer",
       expr: action.bufnr,
+      lineNr: bufInfo[0].lnum as number,
     };
   }
 }
