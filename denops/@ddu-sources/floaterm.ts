@@ -4,7 +4,7 @@ import { ActionData } from "../@ddu-kinds/floaterm.ts";
 import { ensureArray } from "https://deno.land/x/unknownutil@v2.1.0/ensure.ts";
 import { isNumber } from "https://deno.land/x/unknownutil@v2.1.0/mod.ts";
 
-type Param = {};
+type Param = Record<never, never>;
 
 export class Source extends BaseSource<Param> {
   kind = "floaterm";
