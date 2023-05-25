@@ -45,7 +45,6 @@ export class Kind extends BaseKind<Params> {
     return {
       kind: "buffer",
       expr: action.bufnr,
-    }
+    };
   }
 }
-

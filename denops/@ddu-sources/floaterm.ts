@@ -13,7 +13,10 @@ export class Source extends BaseSource<Param> {
   }): ReadableStream<Item<ActionData>[]> {
     return new ReadableStream({
       async start(controller) {
-        const floatermBufList = ensureArray(await args.denops.call("floaterm#buflist#gather"), isNumber);
+        const floatermBufList = ensureArray(
+          await args.denops.call("floaterm#buflist#gather"),
+          isNumber,
+        );
         const items: Item<ActionData>[] = [];
         for (const bufnr of floatermBufList) {
           items.push({
@@ -25,7 +28,7 @@ export class Source extends BaseSource<Param> {
         }
         controller.enqueue(items);
         controller.close();
-      }
+      },
     });
   }
   params(): Param {
