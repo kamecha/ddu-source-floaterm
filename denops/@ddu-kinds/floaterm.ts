@@ -33,6 +33,21 @@ export class Kind extends BaseKind<Params> {
       }
       return ActionFlags.None;
     },
+    close: async (args: {
+      denops: Denops;
+      items: DduItem[];
+    }) => {
+      for (const item of args.items) {
+        if (item.action) {
+          const action = item.action as ActionData;
+          await args.denops.call(
+            "floaterm#terminal#kill",
+            action.bufnr,
+          );
+        }
+      }
+      return ActionFlags.RefreshItems;
+    },
   };
   params(): Params {
     return {};
