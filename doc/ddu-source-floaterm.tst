@@ -42,11 +42,15 @@ EXAMPLES				*ddu-source-floaterm-examples*
 <
 
 ==============================================================================
-ACTIONS						*ddu-kind-floaterm-actions*
+ACTIONS						   *ddu-kind-floaterm-actions*
 
-						*ddu-kind-floaterm-action-open*
+					       *ddu-kind-floaterm-action-open*
 open
 		Open the selected floaterm.
+
+					      *ddu-kind-floaterm-action-close*
+close
+		Close the selected floaterm.
 
 ==============================================================================
 PARAMS					*ddu-source-floaterm-params*
